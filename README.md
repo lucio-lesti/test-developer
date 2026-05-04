@@ -18,6 +18,9 @@ Assicurati di avere installato:
 *   Docker & Docker Compose
 *   Python 3.x
 *   Composer
+Si rimanda ad ogni singolo progetto il relativo README.
+Per installare le dipendenze PHP lanciare "composer.install" nel progetto "backend"
+Per installare le dipendenze Python lanciare "pip install -r requirements.txt" nel progetto "desktop_app"
 
 ### 2. Clonazione del Repository
 ```bash
