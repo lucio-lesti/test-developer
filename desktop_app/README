@@ -1,0 +1,42 @@
+============================================================
+SISTEMA DI GESTIONE PERSONE - CLIENT DESKTOP PYQT6
+============================================================
+
+1. DESCRIZIONE
+Questa applicazione è un client desktop in Python 
+utilizzando il framework PyQt6. L'app funge da interfaccia grafica per il 
+backend Slim PHP, permettendo la gestione completa di un'anagrafica 
+persone (CRUD) e l'importazione massiva di dati tramite file CSV.
+
+2. FUNZIONALITÀ PRINCIPALI
+* Visualizzazione Tabellare: Elenco in tempo reale dei record dal database.
+* Gestione Ruoli: Menu a tendina integrato per assegnare ruoli validi 
+  (admin, user, moderator, guest)[cite: 1].
+* CRUD Completo: Aggiunta, modifica (parziale/totale) e cancellazione 
+  con feedback immediato.
+* Importazione CSV: Caricamento file con validazione riga per riga 
+  lato server.
+* Sicurezza: Connessione autenticata tramite header 'X-API-Token'[cite: 2].
+
+3. REQUISITI DI SISTEMA
+* Python 3.8 o superiore.
+* Pip (gestore pacchetto)
+* Backend Slim PHP attivo e configurato.
+* Librerie Python: PyQt6, requests.
+
+4. INSTALLAZIONE LIBRERIE
+pip install -r requirements.txt
+
+5. UTILIZZO
+Lanciare l'applicazione con il comando:
+$ python main.py
+
+* Autenticazione: Se ricevi un errore 401, verifica il valore del token 
+  nell'header X-API-Token[cite: 2, 4].
+* Validazione: Se l'app restituisce un errore 422, controlla che i dati 
+  inseriti (email, date, campi obbligatori) rispettino i requisiti[cite: 3, 5].
+
+6. NOTE TECNICHE SULLA SICUREZZA
+L'app non invia password in chiaro. La sicurezza è garantita dal middleware 
+del backend che confronta l'hash del token inviato dal client[cite: 1, 2].
+============================================================

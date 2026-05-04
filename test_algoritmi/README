@@ -1,0 +1,55 @@
+============================================================
+ESERCIZI DI LOGICA E ALGORITMI (PYTHON)
+============================================================
+
+1. DESCRIZIONE DEI FILE
+Il pacchetto contiene due script principali che implementano e testano 
+la logica di business richiesta per i task B1, B2 e B3:
+
+* test_algoritmi.py: Script interattivo (CLI) per testare manualmente 
+  gli algoritmi con dati di esempio[cite: 6].
+* unit_test_algoritmi.py: Suite di test automatizzati che verifica la 
+  robustezza e la correttezza della logica[cite: 7].
+
+2. COSA FANNO GLI ALGORITMI
+- B1 (Email Duplicate): Identifica email identiche ignorando spazi extra 
+  e differenze tra maiuscole/minuscole[cite: 6].
+- B2 (Aggregazione Eventi): Raggruppa eventi per ID utente, calcolando 
+  il totale e individuando l'ultimo evento registrato[cite: 6].
+- B3 (Alberi e Ricorsione): Calcola la profondità massima di una 
+  struttura a nodi e identifica tutti i nodi "foglia" (senza figli)[cite: 6].
+
+3. REQUISITI
+* Python 3.x installato.
+* Nessuna libreria esterna richiesta (utilizza moduli standard: 
+  json, unittest, argparse, collections)[cite: 6, 7].
+
+4. COME LANCIARE GLI ALGORITMI (CLI)
+Puoi eseguire singolarmente ogni esercizio passando il codice del task 
+come argomento:
+
+   - Per testare le Email (B1):
+     $ python test_algoritmi.py B1
+
+   - Per testare gli Eventi (B2):
+     $ python test_algoritmi.py B2
+
+   - Per testare l'Albero (B3):
+     $ python test_algoritmi.py B3
+
+5. COME LANCIARE I TEST UNITARI
+Per verificare che tutto funzioni correttamente e che i casi limite 
+(input vuoti, tipi di dati errati) siano gestiti:
+
+$ python unit_test_algoritmi.py
+
+Il comando restituirà un riepilogo (es: "Ran 6 tests in 0.001s - OK") 
+confermando la validità della logica[cite: 7].
+
+6. DETTAGLI TECNICI
+* Normalizzazione: Le email vengono processate con .strip().lower()[cite: 6].
+* Ricorsione: Il calcolo della profondità dell'albero (B3) è implementato 
+  in modo ricorsivo per gestire nidificazioni arbitrarie[cite: 6].
+* Robustezza: Gli script includono controlli isinstance() per evitare 
+  crash in caso di dati non validi (es. numeri al posto di email)[cite: 6].
+============================================================

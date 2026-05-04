@@ -1,0 +1,162 @@
+/* 1. Main Window and Top Navbar */
+#navbar {
+    background-color: #157; /* Dark top bar */
+    border-bottom: 1px solid #444;
+}
+
+#btn_toggle {
+    background-color: #007bff; /* Blue toggle button as seen in image */
+    color: white;
+    border-radius: 4px;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+/* 2. Left Sidebar Styling */
+#sidebar {
+    background-color: #3c444d; /* Slightly lighter dark for sidebar */
+    border-right: 1px solid #222;
+}
+
+#logo_label {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 20px;
+}
+
+/* Sidebar Buttons as Block Buttons */
+#sidebar QPushButton {
+    background-color: transparent;
+    color: #adb5bd;
+    text-align: left;
+    padding: 10px 15px;
+    margin: 4px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+#sidebar QPushButton:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+QPushButton {
+    background-color: #0e639c;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+QPushButton {
+    background-color: #0e639c;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #1177bb;
+}
+/* The ACTIVE Button Style (like "Persons List" in your image) */
+#active_menu {
+    background-color: #007bff !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+/* 3. Main Content Area */
+#pages_area {
+    background-color: #333; /* Matching the top bar */
+}
+
+/* The White Card Container */
+#card {
+    background-color: #1e1e1e; /* Darker card for contrast */
+    border: 2px solid white;    /* White border as seen in your screenshot */
+    border-radius: 0px;
+}
+
+QLabel {
+    color: white;
+}
+
+/* Table Styling */
+QTableWidget {
+    background-color: #1e1e1e;
+    color: white;
+    gridline-color: #444;
+    border: none;
+}
+
+QHeaderView::section {
+    background-color: #333;
+    color: white;
+    border: 1px solid #444;
+    font-weight: bold;
+}
+
+/* Tab Widget Styling */
+QTabWidget::pane {
+    border-top: 1px solid #444; /* Subtle separator line */
+    background-color: #333;
+    top: -1px; /* Overlap the border slightly for a clean look */
+}
+
+QTabBar {
+    background-color: #333; /* Matches your navbar and content background */
+    border: none;
+}
+
+/* 2. The background of the widget that holds the tabs */
+QTabWidget::tab-bar {
+    alignment: left;
+    background-color: #333;
+}
+
+
+QTabBar::tab {
+    background-color: #2c3136; /* Slightly lighter than #333 to stand out */
+    color: #adb5bd;
+    padding: 8px 15px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-right: 2px;
+}
+
+QTabBar::tab:selected {
+    background: #333;
+    color: white;
+    border-bottom: 2px solid #007bff; /* Blue line for active tab */
+}
+
+QTabBar::close-button {
+    image: url(close_icon.png); /* Or use a Unicode X if you don't have an image */
+    subcontrol-position: right;
+}
+
+QTabBar::close-button:hover {
+    background: #dc3545;
+    border-radius: 2px;
+}
+
+
+/* Style the close button on the tab */
+QTabBar::close-button {
+    image: url(close_icon.png); /* If you have an icon file */
+    subcontrol-position: right;
+    margin-right: 4px;
+}
+
+/* If you don't have an icon file, you can use a hover effect to show where it is */
+QTabBar::close-button:hover {
+    background-color: #dc3545; /* Red background on hover */
+    border-radius: 2px;
+}
+
+QMessageBox {
+    background-color: #333; /* Matches your dark theme */
+} 

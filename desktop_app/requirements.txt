@@ -1,0 +1,5 @@
+# GUI Framework
+PyQt6==6.4.2
+
+#Request Library
+requests==2.23.0

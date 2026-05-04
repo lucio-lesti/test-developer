@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8050:80"
+    volumes:
+      - .:/var/www/html  # This maps your 'test' folder to the container
+    environment:
+      - DB_HOST=db
+      - DB_NAME=test
+      - DB_USER=admin
+      - DB_PASS=secret
+    depends_on:
+      - dbhost
+
+  dbhost:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_USER: lucius
+      MYSQL_PASSWORD: Lucius76@!
+      MYSQL_ROOT_PASSWORD: Lucius76@!
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./persons.sql:/docker-entrypoint-initdb.d/persons.sql

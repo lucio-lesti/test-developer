@@ -1,0 +1,6 @@
+first_name,last_name,email,date_of_birth,phone_number,role,notes
+Mario,Rossi,mario.rossi@example.it,1985-03-12,+39 333 1234567,admin,Responsabile IT
+Giulia,Bianchi,giulia.bianchi@example.it,1990-07-22,+39 340 9876543,user,
+Luca,Verdi,luca.verdi@example.it,1978-11-05,+39 348 5556677,moderator,Turno notturno
+Sofia,Russo,sofia.russo@example.it,1995-02-18,,user,
+Marco,Esposito,marco.esposito@example.it,1982-09-30,+39 320 1112233,guest,Collaboratore esterno
