@@ -5,7 +5,7 @@ Questo repository contiene un sistema integrato composto da un'API backend, un'a
 ## 🚀 Presentazione del Progetto
 Il progetto è organizzato in una struttura monorepo per facilitare la gestione delle diverse componenti:
 
-*   **Backend**: API REST sviluppata con Slim PHP, containerizzata con Docker.
+*   **Backend**: API REST sviluppata con Slim PHP, scelto per la sua leggerezza
 *   **Desktop App**: Interfaccia grafica (GUI) sviluppata in Python con PyQt6.
 *   **Test Algoritmi**: Soluzioni a problemi logici (B1, B2, B3) con caricamento dati tramite JSON[
 
