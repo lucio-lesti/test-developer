@@ -19,6 +19,7 @@ A3 — Importazione CSV per Person (MIME sniffing, limite dimensione, storage UU
 L'Ambiente PHP + Mysql 8.x viene installato tramite file docker presente nella root del progetto.
 Inoltre viene lanciato lo script in automatico per la migrazione della tabella "persons" nel DB
 lanciare i seguenti comandi:
+
 docker-compose up -d --build
 docker-compose exec app composer install --working-dir=backend #per installare le dipendenze di Slim PHP framework
 
