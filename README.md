@@ -25,6 +25,4 @@ Per installare le dipendenze Python lanciare "pip install -r requirements.txt" n
 NOTE:Con Docker c'è un leggero delay nella visualizzazione dei dati sia nela versione web che desktop
 
 ### 2. Clonazione del Repository
-```bash
-git clone [https://github.com/lucio-lesti/test-developer.git](https://github.com/lucio-lesti/test-developer.git)
-cd test-developer
+git clone https://github.com/lucio-lesti/test-developer.git
