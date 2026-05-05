@@ -19,7 +19,7 @@ Assicurati di avere installato:
 *   Python 3.x
 *   Composer
 Si rimanda ad ogni singolo progetto il relativo README.
-Per installare le dipendenze PHP lanciare "composer.install" nel progetto "backend"
+Per installare le dipendenze PHP lanciare "composer.install" nel progetto "backend" se non si utilizza docker 
 Per installare le dipendenze Python lanciare "pip install -r requirements.txt" nel progetto "desktop_app"
 
 NOTE:Con Docker c'è un leggero delay nella visualizzazione dei dati sia nela versione web che desktop
