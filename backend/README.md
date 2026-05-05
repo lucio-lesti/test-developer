@@ -10,7 +10,7 @@ A3 — Importazione CSV per Person (MIME sniffing, limite dimensione, storage UU
 
 ## Requisiti
 
-- **PHP 7.4 or 8.x** (tested on 8.2)
+- **PHP 8.x** (tested on 8.2)
 - Estensioni: `pdo`, `pdo_sqlite` (always required by tests), `pdo_mysql` (optional, only for the MySQL runtime path), `fileinfo`
 - Composer
 
