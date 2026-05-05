@@ -14,13 +14,22 @@ A3 — Importazione CSV per Person (MIME sniffing, limite dimensione, storage UU
 - Estensioni: `pdo`, `pdo_sqlite` (always required by tests), `pdo_mysql` (optional, only for the MySQL runtime path), `fileinfo`
 - Composer
 
+####
+## Installazione Via Docker
+L'Ambiente PHP + Mysql 8.x viene installato tramite file docker presente nella root del progetto.
+Inoltre viene lanciato lo script in automatico per la migrazione della tabella "persons" nel DB
+lanciare i seguenti comandi:
+docker-compose up -d --build
+docker-compose exec app composer install --working-dir=backend #per installare le dipendenze di Slim PHP framework
+
+
+
 ## Installazione MANUALE
-Note:Cl'installazine di composer non è necessario perchè l'applicazione è "batterie incluse", infatti è gia incluso
-il framework Slim
+Posizionarsi nella cartella backend e lanciare da CLI
+composer install
  
 ***Database**
 MySQL 8.x  
-
 
 ```bash
 # 1. creazione database
@@ -39,9 +48,6 @@ Il server starta su `http://localhost:8050`.
 ### APPLICAZIONE WEB
 L'applicazione web si trova all'indirizzo "http://localhost:8050/web" 
 
-
-## Installazione Via Docker
-L''Ambiente PHP + Mysql 8.x puo essere installato tramite file docker presente nella root del progetto
 
 
 ### Variabili d'Ambiente
