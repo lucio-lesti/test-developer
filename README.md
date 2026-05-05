@@ -22,6 +22,8 @@ Si rimanda ad ogni singolo progetto il relativo README.
 Per installare le dipendenze PHP lanciare "composer.install" nel progetto "backend"
 Per installare le dipendenze Python lanciare "pip install -r requirements.txt" nel progetto "desktop_app"
 
+NOTE:Con Docker c'è un leggero delay nella visualizzazione dei dati sia nela versione web che desktop
+
 ### 2. Clonazione del Repository
 ```bash
 git clone [https://github.com/lucio-lesti/test-developer.git](https://github.com/lucio-lesti/test-developer.git)
