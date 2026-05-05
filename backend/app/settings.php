@@ -32,7 +32,7 @@ return function (ContainerBuilder $containerBuilder) {
             } else {
                 $db = [
                     'driver'   => 'mysql',
-                    'dsn'      => 'mysql:host=localhost;dbname=test;charset=utf8mb4',
+                    'dsn'      => 'mysql:host=dbhost;dbname=test;charset=utf8mb4',
                     'username' => 'lucius',
                     'password' => 'Lucius76@!',
                     'options'  => [
