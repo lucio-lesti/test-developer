@@ -42,6 +42,21 @@ mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS test CHARACTER SET utf8mb4 CO
 DB_DRIVER=mysql DB_HOST=localhost DB_NAME=test DB_USER=root DB_PASS=root \
   php bin/migrate.php
 
+Verificare e configurare le credenziali di accesso a mysql in app/settings.php nella sezine mysql:
+"
+                $db = [
+                    'driver'   => 'mysql',
+                    'dsn'      => 'mysql:host=tuohost;dbname=tuodb;charset=utf8mb4',
+                    'username' => 'tua_user',
+                    'password' => 'tua_pwd',
+                    'options'  => [
+                        PDO::ATTR_PERSISTENT         => true,
+                        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                        PDO::ATTR_EMULATE_PREPARES   => false,
+                    ],
+                ];
+"
 
 Per lanciare il server eseguire il comando da CLI: 
 php -S localhost:8050 -t public
