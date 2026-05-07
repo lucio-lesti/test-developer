@@ -133,28 +133,20 @@ QTabBar::tab:selected {
     border-bottom: 2px solid #007bff; /* Blue line for active tab */
 }
 
+/* Close button on tabs: X bianca, nessun effetto hover. */
 QTabBar::close-button {
-    image: url(close_icon.png); /* Or use a Unicode X if you don't have an image */
-    subcontrol-position: right;
-}
-
-QTabBar::close-button:hover {
-    background: #dc3545;
-    border-radius: 2px;
-}
-
-
-/* Style the close button on the tab */
-QTabBar::close-button {
-    image: url(close_icon.png); /* If you have an icon file */
+    image: url({ASSETS}/close_white.svg);
     subcontrol-position: right;
     margin-right: 4px;
+    width: 14px;
+    height: 14px;
+    background: transparent;
+    border: none;
 }
 
-/* If you don't have an icon file, you can use a hover effect to show where it is */
 QTabBar::close-button:hover {
-    background-color: #dc3545; /* Red background on hover */
-    border-radius: 2px;
+    background: transparent;
+    border: none;
 }
 
 QMessageBox {
