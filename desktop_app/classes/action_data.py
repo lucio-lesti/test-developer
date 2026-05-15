@@ -6,6 +6,38 @@ elenco, lettura singola, creazione, modifica, eliminazione e importazione CSV
 
 from classes.common_lib import *
 
+
+class _CsvUploadSignals(QObject):
+    """Segnali emessi dal worker di upload CSV."""
+    finished = pyqtSignal(object)
+    error = pyqtSignal(str)
+
+
+class _CsvUploadWorker(QRunnable):
+    """Esegue l'upload del CSV in un thread separato del QThreadPool
+    in modo da non bloccare la UI durante la richiesta HTTP.
+    """
+
+    def __init__(self, url, headers, file_path):
+        super().__init__()
+        self.url = url
+        self.headers = headers
+        self.file_path = file_path
+        self.signals = _CsvUploadSignals()
+
+    @pyqtSlot()
+    def run(self):
+        try:
+            with open(self.file_path, 'rb') as fh:
+                files = {'file': (os.path.basename(self.file_path), fh, 'text/csv')}
+                res = requests.post(self.url, headers=self.headers, files=files, timeout=30)
+            res.raise_for_status()
+            body = res.json() if res.content else {}
+            self.signals.finished.emit(body)
+        except Exception as e:
+            self.signals.error.emit(str(e))
+
+
 class ActionData:
 
     def __init__(self, gui):
@@ -162,31 +194,49 @@ class ActionData:
     #Importazione CSV
     def import_csv(self):
         """Importa un file CSV inviandolo al backend come multipart/form-data.
+        Esegue l'upload in un thread separato e mostra un loader modale
+        finche' il backend non risponde.
         """
         headers = {
             "X-API-Token": str(self.gui.settings.value("WS_CONFIG/api_token")),
             "Accept": "application/json"
-        }           
+        }
         file_path, _ = QFileDialog.getOpenFileName(self.gui, "Seleziona CSV", "", "File CSV (*.csv)")
         if not file_path:
             return
-        try:
-            with open(file_path, 'rb') as fh:
-                files = {'file': (os.path.basename(file_path), fh, 'text/csv')}
-                res = requests.post(self._persons_url(suffix='import'), headers=headers,files=files, timeout=30)
-            res.raise_for_status()
-            body = res.json() if res.content else {}
-            stats = body.get('data', {}) if isinstance(body, dict) else {}
-            total   = stats.get('total', 0)
-            valid   = stats.get('valid', 0)
-            invalid = stats.get('invalid', 0)
-            msg = f"Importazione: totale={total}, validi={valid}, non validi={invalid}"
-            
-            # Warning se almeno un record e' stato scartato dal server.
-            if invalid:
-                QMessageBox.warning(self.gui, "Importazione Completata", msg)
-            else:
-                QMessageBox.information(self.gui, "Importazione Riuscita", msg)
-            self.fetch_data()
-        except Exception as e:
-            QMessageBox.critical(self.gui, "Errore di Importazione", f"Caricamento fallito: {e}")
+
+        # Loader modale indeterminato (range 0..0 = barra "busy").
+        progress = QProgressDialog("Importazione CSV in corso...", None, 0, 0, self.gui)
+        progress.setWindowTitle("Importazione")
+        progress.setWindowModality(Qt.WindowModality.ApplicationModal)
+        progress.setCancelButton(None)
+        progress.setMinimumDuration(0)
+        progress.setAutoClose(False)
+        progress.setAutoReset(False)
+        progress.show()
+
+        worker = _CsvUploadWorker(self._persons_url(suffix='import'), headers, file_path)
+        worker.signals.finished.connect(lambda body: self._on_import_finished(progress, body))
+        worker.signals.error.connect(lambda err: self._on_import_error(progress, err))
+        QThreadPool.globalInstance().start(worker)
+
+
+    def _on_import_finished(self, progress, body):
+        """Callback al termine dell'upload CSV: chiude il loader e mostra il riepilogo."""
+        progress.close()
+        stats = body.get('data', {}) if isinstance(body, dict) else {}
+        total   = stats.get('total', 0)
+        valid   = stats.get('valid', 0)
+        invalid = stats.get('invalid', 0)
+        msg = f"Importazione: totale={total}, validi={valid}, non validi={invalid}"
+        if invalid:
+            QMessageBox.warning(self.gui, "Importazione Completata", msg)
+        else:
+            QMessageBox.information(self.gui, "Importazione Riuscita", msg)
+        self.fetch_data()
+
+
+    def _on_import_error(self, progress, err):
+        """Callback in caso di errore durante l'upload CSV."""
+        progress.close()
+        QMessageBox.critical(self.gui, "Errore di Importazione", f"Caricamento fallito: {err}")
