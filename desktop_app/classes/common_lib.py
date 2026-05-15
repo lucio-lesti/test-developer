@@ -12,10 +12,11 @@ from PyQt6.QtWidgets import (QApplication, QMainWindow, QTableWidget,
                              QTableWidgetItem, QVBoxLayout, QHBoxLayout,
                              QPushButton, QWidget, QMessageBox, QHeaderView,
                              QLabel, QTabWidget, QLineEdit, QFormLayout,
-                             QDateEdit, QFileDialog, QFrame,QComboBox)
+                             QDateEdit, QFileDialog, QFrame,QComboBox,
+                             QProgressDialog)
 
 # Classi core (timer, impostazioni, animazioni, threading).
-from PyQt6.QtCore import Qt, QTimer, QSettings, QDate, QPropertyAnimation, QEasingCurve
+from PyQt6.QtCore import Qt, QTimer, QSettings, QDate, QPropertyAnimation, QEasingCurve, QObject, pyqtSignal
 from PyQt6.QtGui import QFont, QIntValidator
 from PyQt6.QtWidgets import QTabBar
 from PyQt6.QtCore import QRunnable, pyqtSlot, QThreadPool
