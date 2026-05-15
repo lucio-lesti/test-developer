@@ -18,10 +18,14 @@ class Gui(QMainWindow):
     def __init__(self):
         super().__init__()
         # Caricamento foglio di stile QSS dalla cartella assets/ del progetto.
+        # `{ASSETS}` viene sostituito col path assoluto cosi' i riferimenti
+        # url(...) (icone, immagini) sono risolti correttamente.
         qss_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "assets/style.qss")
         if os.path.exists(qss_path):
+            assets_dir = os.path.dirname(qss_path).replace("\\", "/")
             with open(qss_path, "r") as f:
-                self.setStyleSheet(f.read())
+                qss = f.read().replace("{ASSETS}", assets_dir)
+            self.setStyleSheet(qss)
 
         self.action_data = ActionData(self)
         self.action_gui = ActionGui(self)
